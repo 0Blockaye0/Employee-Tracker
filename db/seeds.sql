@@ -1,27 +1,27 @@
 INSERT INTO department (name)
 VALUES 
-    ('Sales')
+    ('Sales'),
     ('Engineering'),
     ('Marketing'),
     ('Distribution'),
     ('Managment');
 
 
-INSERT INTO role (title, salary)
+INSERT INTO role (title, salary, department_id)
 VALUES
-    ('Salesperon', 45,000.00),
-    ('Sales Lead', 55,500.00),
-    ('Senior Engineer', 120,000.00),
-    ('Junior Engineer', 75,000.00),
-    ('Mareketing Specialist', 55,000.00),
-    ('Marketing Director', 75,000.00),
-    ('Warehouse Crew', 35,500.00),
-    ('Warehouse Manager', 55,000.00);
+    ('Salesperon', 45000.00, 1),
+    ('Sales Lead', 55500.00, 1),
+    ('Senior Engineer', 120000.00, 2),
+    ('Junior Engineer', 75000.00, 2),
+    ('Mareketing Specialist', 55000.00, 3),
+    ('Marketing Director', 75000.00, 3),
+    ('Warehouse Crew', 35500.00, 4),
+    ('Warehouse Manager', 55000.00, 4);
 
 
 
-INSERT INTO employee (first_name, last_name, role_id)
-VALUES 
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES
   ('Ronald', 'Firbank', 1, 1),
   ('Virginia', 'Woolf', 1, 2),
   ('Piers', 'Gaveston', 1, 3),
