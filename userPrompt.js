@@ -9,9 +9,9 @@ const init = () => {
       type: "rawlist",
       name: "mainMenu",
       message: `
-        MAIN MENU
-        ---------
- PLease select an option.
+                  MAIN MENU
+              ------------------
+            PLease select an option.
             `,
       choices: [
         "View all Departments",
@@ -25,38 +25,75 @@ const init = () => {
       ],
     })
     .then((data) => {
-      // console.log(data);
-      //   const switchFun = () => {
       switch (data.mainMenu) {
-        case "View all Departments": //viewDepts:
+
+        case "View all Departments":
           //   console.log("inside switch statement");
-          user.viewAllDept();
-          // console.log("made it back to the switch");
-          init();
+          user.viewAllDept().then(rows => {
+             console.table(`
+
+
+
+               ALL DEPARTMENTS
+           ------------------------
+        ` , rows)
+          })
+          .then(() => {
+            init()
+          });
+          // init();
           break;
-        case "View all Roles": //viewRoles:
-          user.viewAllRoles();
-          init();
+
+        case "View all Roles":
+          user.viewAllRoles().then(rows => {
+             console.table(`
+
+
+
+                  ALL ROLES
+           ------------------------
+        ` , rows)
+          }).then(() => {
+            init();
+          })
           break;
-        case "View all Employees": //viewEmployees:
-          user.viewAllEmployees();
-          init();
-          break;
-        case "Add a Department": //addDept:
+
+        case "View all Employees":
+          user.viewAllEmployees().then(rows => {
+            console.table(`
+
+
+
+                ALL EMPLOYEES
+            ----------------------
+       ` , rows)
+         }).then(() => {
+           init();
+         })
+         break;
+
+        case "Add a Department":
           // function
           break;
-        case "Add a Role": //addRole:
+
+        case "Add a Role":
           // function
           break;
-        case "Add an Employee": //addEmployee:
+
+        case "Add an Employee":
           // function
           break;
-        case "Update an Employee Role": //updateEmployeeRole:
+
+        case "Update an Employee Role":
           // function
           break;
-        case "Return to Main Menu": //mainMenu:
+
+        case "Return to Main Menu":
           init();
           break;
+
+        // default:
+        //   return quit();
       }
     });
 };
