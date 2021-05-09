@@ -1,7 +1,9 @@
 const inquirer = require("inquirer");
+const returnRolesList = require("./lib/Role");
 // const db = require('./db/connection')
-const {User, addDeptPrompt, addRolePrompt } = require("./lib/User");
+const { User, addDeptPrompt, addRolePrompt } = require("./lib/User");
 const user = new User();
+const { returnDeptList } = require("./lib/Dept");
 
 const init = () => {
   inquirer
@@ -26,48 +28,59 @@ const init = () => {
     })
     .then((data) => {
       switch (data.mainMenu) {
-
         case "View all Departments":
           //   console.log("inside switch statement");
-          user.viewAllDept().then(rows => {
-             console.table(rows)
-          })
-          .then(() => {
-            init()
-          });
+          user
+            .viewAllDept()
+            .then((rows) => {
+              console.table(rows);
+            })
+            .then(() => {
+              init();
+            });
           // init();
           break;
 
         case "View all Roles":
-          user.viewAllRoles().then(rows => {
-             console.table(rows)
-          }).then(() => {
-            init();
-          })
+          user
+            .viewAllRoles()
+            .then((rows) => {
+              console.table(rows);
+            })
+            .then(() => {
+              init();
+            });
           break;
 
         case "View all Employees":
-          user.viewAllEmployees().then(rows => {
-            console.table(rows)
-         }).then(() => {
-           init();
-         })
-         break;
+          user
+            .viewAllEmployees()
+            .then((rows) => {
+              console.table(rows);
+            })
+            .then(() => {
+              init();
+            });
+          break;
 
         case "Add a Department":
-          addDeptPrompt().then(res => {
+          addDeptPrompt().then((res) => {
             user.addDept(res).then(() => {
               init();
-            })
-          })
+            });
+          });
           break;
 
         case "Add a Role":
-          addRolePrompt().then(res => {
-            user.addRole(res).then(() => {
-              init();
-            })
-          })
+          returnDeptList().then((depts) => {
+            // console.log('depts inside switch case:', depts);
+
+            addRolePrompt(depts).then((res) => {
+              user.addRole(res).then(() => {
+                init();
+              });
+            });
+          });
           break;
 
         case "Add an Employee":
