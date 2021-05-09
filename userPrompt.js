@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 // const db = require('./db/connection')
-const User = require("./lib/User");
+const {User, addDeptPrompt, addRolePrompt } = require("./lib/User");
 const user = new User();
 
 const init = () => {
@@ -30,13 +30,7 @@ const init = () => {
         case "View all Departments":
           //   console.log("inside switch statement");
           user.viewAllDept().then(rows => {
-             console.table(`
-
-
-
-               ALL DEPARTMENTS
-           ------------------------
-        ` , rows)
+             console.table(rows)
           })
           .then(() => {
             init()
@@ -46,13 +40,7 @@ const init = () => {
 
         case "View all Roles":
           user.viewAllRoles().then(rows => {
-             console.table(`
-
-
-
-                  ALL ROLES
-           ------------------------
-        ` , rows)
+             console.table(rows)
           }).then(() => {
             init();
           })
@@ -60,24 +48,26 @@ const init = () => {
 
         case "View all Employees":
           user.viewAllEmployees().then(rows => {
-            console.table(`
-
-
-
-                ALL EMPLOYEES
-            ----------------------
-       ` , rows)
+            console.table(rows)
          }).then(() => {
            init();
          })
          break;
 
         case "Add a Department":
-          // function
+          addDeptPrompt().then(res => {
+            user.addDept(res).then(() => {
+              init();
+            })
+          })
           break;
 
         case "Add a Role":
-          // function
+          addRolePrompt().then(res => {
+            user.addRole(res).then(() => {
+              init();
+            })
+          })
           break;
 
         case "Add an Employee":
@@ -97,6 +87,12 @@ const init = () => {
       }
     });
 };
+
+// ALL EMPLOYEES QUERY
+// SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary  FROM employee LEFT JOIN role ON employee.role_id LEFT JOIN department ON role.department_id;
+
+// ALL EMPLOYEES REQUIRED DATA/ROWS
+// employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers
 
 module.exports = init;
 
