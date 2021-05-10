@@ -1,7 +1,11 @@
 const inquirer = require("inquirer");
-const returnRolesList = require("./lib/Role");
 // const db = require('./db/connection')
-const { User, addDeptPrompt, addRolePrompt } = require("./lib/User");
+const {
+  User,
+  addDeptPrompt,
+  addRolePrompt,
+  addEmployeePrompt,
+} = require("./lib/User");
 const user = new User();
 const { returnDeptList } = require("./lib/Dept");
 
@@ -74,7 +78,6 @@ const init = () => {
         case "Add a Role":
           returnDeptList().then((depts) => {
             // console.log('depts inside switch case:', depts);
-
             addRolePrompt(depts).then((res) => {
               user.addRole(res).then(() => {
                 init();
@@ -84,7 +87,14 @@ const init = () => {
           break;
 
         case "Add an Employee":
-          // function
+          addEmployeePrompt()
+            .then((res) => {
+              user.addEmployee(res);
+              // console.log(res);
+            })
+            .then(() => {
+              init();
+            });
           break;
 
         case "Update an Employee Role":
