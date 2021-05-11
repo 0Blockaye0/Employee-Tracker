@@ -1,10 +1,10 @@
 const inquirer = require("inquirer");
-// const db = require('./db/connection')
 const {
   User,
   addDeptPrompt,
   addRolePrompt,
   addEmployeePrompt,
+  updateEmployeePrompt,
 } = require("./lib/User");
 const user = new User();
 const { returnDeptList } = require("./lib/Dept");
@@ -98,7 +98,12 @@ const init = () => {
           break;
 
         case "Update an Employee Role":
-          // function
+          updateEmployeePrompt().then((res) => {
+            // console.log(res);
+            user.updateEmployee(res).then(() => {
+              init();
+            });
+          });
           break;
 
         case "Return to Main Menu":
@@ -111,19 +116,4 @@ const init = () => {
     });
 };
 
-// ALL EMPLOYEES QUERY
-// SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary  FROM employee LEFT JOIN role ON employee.role_id LEFT JOIN department ON role.department_id;
-
-// ALL EMPLOYEES REQUIRED DATA/ROWS
-// employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers
-
 module.exports = init;
-
-// CONNECT TO DATABASE
-// db.connect((err) => {
-//     if (err) throw err;
-//     console.log("Database connected.");
-//     // app.listen(PORT, () => {
-//     //   console.log(`Server running on port ${PORT}`);
-//     // });
-//   });
