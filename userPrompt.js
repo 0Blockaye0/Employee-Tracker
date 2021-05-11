@@ -10,6 +10,7 @@ const user = new User();
 const { returnDeptList } = require("./lib/Dept");
 
 const init = () => {
+
   inquirer
     .prompt({
       type: "rawlist",
@@ -28,6 +29,7 @@ const init = () => {
         "Add an Employee",
         "Update an Employee Role",
         "Return to Main Menu",
+        "QUIT.",
       ],
     })
     .then((data) => {
@@ -41,7 +43,7 @@ const init = () => {
             })
             .then(() => {
               init();
-            });
+            }).catch()
           // init();
           break;
 
@@ -110,8 +112,9 @@ const init = () => {
           init();
           break;
 
-        // default:
-        //   return quit();
+        case "QUIT.":
+          console.log("GoodBye!");
+           break;
       }
     });
 };
