@@ -28,8 +28,7 @@
 
   ## Usage
    
-<iframe src="https://drive.google.com/file/d/1jYAfd1ifTtHCz9rO3f-VgQPjXw80-ldU/preview" width="640" height="480"></iframe>
-
+![](https://drive.google.com/file/d/1jYAfd1ifTtHCz9rO3f-VgQPjXw80-ldU/view)
 ![/assets/images/Employee_TrackerScreenShot.png](/assets/images/Employee_TrackerScreenShot.png)
 
 
