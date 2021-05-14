@@ -42,7 +42,7 @@ https://drive.google.com/file/d/1jYAfd1ifTtHCz9rO3f-VgQPjXw80-ldU/view
 
   ## License
 
-  * No license is provided for this project
+  * MIT
   * 
 
   ## Badges
