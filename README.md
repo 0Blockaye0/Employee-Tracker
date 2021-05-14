@@ -1,6 +1,6 @@
 
   # Employee-Tracker
-
+![](https://drive.google.com/file/d/1jYAfd1ifTtHCz9rO3f-VgQPjXw80-ldU/view)
   ## Description 
 
   This Project is a Content Managment System using mysql database and inquirer node package. You are able to create, view, and update data.   
@@ -28,7 +28,6 @@
 
   ## Usage
    
-![](https://drive.google.com/file/d/1jYAfd1ifTtHCz9rO3f-VgQPjXw80-ldU/view)
 ![/assets/images/Employee_TrackerScreenShot.png](/assets/images/Employee_TrackerScreenShot.png)
 
 
