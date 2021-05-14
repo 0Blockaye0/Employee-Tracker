@@ -7,7 +7,7 @@
 
   here is a link to my project.
   
-  * [link](https://github.com/0Blockaye0/Employee-Tracker)
+  * [Link to the Project](https://github.com/0Blockaye0/Employee-Tracker)
 
   ## Table of Contents
 
