@@ -3,7 +3,7 @@
   
    ## Description 
 
-  This Project is a Content Managment System using mysql database and inquirer node package. You are able to create, view, and update data.   
+  This Project is a Content Managment System using node.js, mysql database, and the inquirer node package. You are able to create, view, and update data.   
 
   here is a link to my project.
   
